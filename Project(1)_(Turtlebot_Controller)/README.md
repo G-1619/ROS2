@@ -10,6 +10,6 @@ PyQt를 이용해 만든 UI로 Gazebo 상의 Turtlebot을 제어한다.
 
 ## Usage
 '''bash
-git clone https://github.com/사용자명/저장소명.git
+git clone https://github.com/G-1619/ROS2/tree/c38f157ed8a8863b24e26774af2eeb4e7d4ae171/Project(1)_(Turtlebot_Controller)
 colcon build
 '''
