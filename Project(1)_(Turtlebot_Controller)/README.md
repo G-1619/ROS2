@@ -36,3 +36,19 @@ ros2 launch turtlebot3_gazebo my_world.launch.py world:=/.../my_world.world
 /bin/python3 /.../my_turtlebot_controller.py
 ```
 <br/><br/><br/>
+
+## [ Functional Details ]
+### 1. 버튼 제어
+<div align="center">
+  <img src=""/>
+</div><br/>
+
+### 2. 도형 이동
+<div align="center">
+  <img src=""/>
+</div><br/>
+
+### 3. 충돌 방지 주행
+<div align="center">
+  <img src=""/>
+</div><br/>
