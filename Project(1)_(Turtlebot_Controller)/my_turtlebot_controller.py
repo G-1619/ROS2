@@ -84,9 +84,11 @@ class MyTurtlebot3Controller(QWidget):
         self.ui.go_AP.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(3))
         self.ui.btn_autoStart.clicked.connect(self.btn_autoStart_clicked)
         self.ui.btn_autoStop.clicked.connect(self.btn_autoStop_clicked)
+        self.ui.btn_autoStop.setEnabled(False)
         self.ui.btn_MP_3.clicked.connect(self.btn_MP_clicked_inAP)
         self.last_state_msg = String()
         self.last_state_msg.data = "Stop"
+        self.auto_pub_node.signals.Driving_status.connect(self.update_AP_button)
 
         # MultiThread 설정
         self.executor = MultiThreadedExecutor(num_threads=12)
@@ -101,6 +103,10 @@ class MyTurtlebot3Controller(QWidget):
         # rclpy Thread 시작.
         self.rclpy_thread = RclpyThread(self.executor)
         self.rclpy_thread.start()
+
+    def update_AP_button(self, is_driving):
+        self.ui.btn_autoStart.setEnabled(not is_driving)
+        self.ui.btn_autoStop.setEnabled(is_driving)
 
     def update_FP_button(self, is_running):
         self.ui.btn_startFigure.setEnabled(not is_running)
@@ -136,7 +142,7 @@ class MyTurtlebot3Controller(QWidget):
         self.ui.list_Dlog.addItem(f"Turtlebot Status: {self.last_state_msg.data}.")
 
     def btn_autoStart_clicked(self):
-        self.ui.list_Dlog.clear()
+        # self.ui.list_Dlog.clear()
         self.last_state_msg.data = "Stop"
         self.auto_pub_node.start_drive()
 
@@ -217,11 +223,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
 
