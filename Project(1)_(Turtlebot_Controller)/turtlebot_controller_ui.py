@@ -172,7 +172,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -180,9 +180,9 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Turtlebot_Controller", None))
-        self.go_BP.setText(QCoreApplication.translate("Form", u"\ubc84\ud2bc \uc81c\uc5b4", None))
-        self.go_FP.setText(QCoreApplication.translate("Form", u"\ub3c4\ud615 \uc774\ub3d9", None))
-        self.go_AP.setText(QCoreApplication.translate("Form", u"\uc790\ub3d9 \uc8fc\ud589", None))
+        self.go_BP.setText(QCoreApplication.translate("Form", u"Button \uc81c\uc5b4", None))
+        self.go_FP.setText(QCoreApplication.translate("Form", u"\ub3c4\ud615 \uc8fc\ud589", None))
+        self.go_AP.setText(QCoreApplication.translate("Form", u"\ucda9\ub3cc \ubc29\uc9c0 \uc8fc\ud589", None))
         self.Title.setHtml(QCoreApplication.translate("Form", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -198,7 +198,7 @@ class Ui_Form(object):
         self.btn_TRight.setText(QCoreApplication.translate("Form", u"Turn Right", None))
         self.btn_TLeft.setText(QCoreApplication.translate("Form", u"Turn Left", None))
         self.btn_MP.setText(QCoreApplication.translate("Form", u"Main", None))
-        self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">\ub3c4\ud615 \uc774\ub3d9</span></p></body></html>", None))
+        self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">\ub3c4\ud615 \uc8fc\ud589</span></p></body></html>", None))
         self.gruop_figure.setTitle(QCoreApplication.translate("Form", u"\ub3c4\ud615", None))
         self.btn_triangle.setText(QCoreApplication.translate("Form", u"\uc0bc\uac01\ud615", None))
         self.btn_square.setText(QCoreApplication.translate("Form", u"\uc0ac\uac01\ud615", None))
@@ -207,7 +207,7 @@ class Ui_Form(object):
         self.btn_startFigure.setText(QCoreApplication.translate("Form", u"\uc774\ub3d9", None))
         self.btn_MP_2.setText(QCoreApplication.translate("Form", u"Main", None))
         self.btn_stopFigure.setText(QCoreApplication.translate("Form", u"\uc911\uc9c0", None))
-        self.label_6.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">\uc790\ub3d9 \uc8fc\ud589</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">\ucda9\ub3cc \ubc29\uc9c0 \uc8fc\ud589</span></p></body></html>", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"\uc8fc\ud589 \uc0c1\ud0dc", None))
         self.btn_autoStart.setText(QCoreApplication.translate("Form", u"Start", None))
         self.btn_MP_3.setText(QCoreApplication.translate("Form", u"Main", None))
