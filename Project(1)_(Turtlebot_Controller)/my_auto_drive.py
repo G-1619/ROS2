@@ -8,6 +8,10 @@ from rclpy.qos import qos_profile_sensor_data
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
+from PySide6.QtCore import QObject, Signal
+
+class DrivingSignals(QObject):
+    Driving_status = Signal(bool)
 
 class AutoDrive(Node):
   def __init__(self):
@@ -42,6 +46,8 @@ class AutoDrive(Node):
     self.before_position_y = Odometry().pose.pose.position.y
     self.last_record_time = time.time()
     self.adjust_pose = False
+    self.set_adjust_time = 5.0
+    self.signals = DrivingSignals()
 
   def odom_callback(self, msg):
         self.odom = msg
@@ -88,7 +94,7 @@ class AutoDrive(Node):
       current_position_x = self.odom.pose.pose.position.x
       current_position_y = self.odom.pose.pose.position.y
 
-      if current_time-self.last_record_time >= 10.0:
+      if current_time-self.last_record_time >= self.set_adjust_time:
         diff_x = abs(current_position_x - self.before_position_x)
         diff_y = abs(current_position_y - self.before_position_y)
         if diff_x < 0.01 and diff_y < 0.01:
@@ -134,12 +140,14 @@ class AutoDrive(Node):
   def start_drive(self):
     if self.timer.is_canceled():
         self.timer.reset()
+        self.signals.Driving_status.emit(True)
         self.get_logger().info('AutoDrive Started.')
 
   def stop_drive(self):
     if not self.timer.is_canceled():
         self.timer.cancel()
         self.init_twist() # 물리적으로 로봇 멈춤
+        self.signals.Driving_status.emit(False)
         self.get_logger().info('AutoDrive Stopped.')
 
   def output_state(self):
