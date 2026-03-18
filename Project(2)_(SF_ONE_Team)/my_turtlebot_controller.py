@@ -21,7 +21,6 @@ from cv_bridge import CvBridge
 # ros2 의 module 참조방식
 from turtlebot_controller_ui import Ui_Form
 from my_auto_drive import AutoDrive
-from my_image_sub import ImageSubscriber
 from my_turtle_yolo import TurtleYOLONode
 from my_window import CameraWindow
 
@@ -55,7 +54,6 @@ class MyTurtlebot3Controller(QWidget):
         # image 처리 멤버
         self.current_frame = None
         self.bridge = CvBridge()
-        self.img_sub_node = ImageSubscriber(self.image_callback)
         self.sound_node = Node("Sound_client")
         self.Sound_client = self.sound_node.create_client(Sound, '/sound')
         self.detection_target = ["no-helmet", "no-vest"]
@@ -101,7 +99,6 @@ class MyTurtlebot3Controller(QWidget):
         self.executor.add_node(self.btn_pub_node)
         self.executor.add_node(self.auto_pub_node)
         self.executor.add_node(self.auto_sub_node)
-        self.executor.add_node(self.img_sub_node)
         self.executor.add_node(self.yolo_node)
         self.executor.add_node(self.sound_node)
 
@@ -327,7 +324,6 @@ class MyTurtlebot3Controller(QWidget):
         self.btn_pub_node.destroy_node()
         self.auto_pub_node.destroy_node()
         self.auto_sub_node.destroy_node()
-        self.img_sub_node.destroy_node()
         self.yolo_node.destroy_node()
         self.sound_node.destroy_node()
         rclpy.shutdown()
